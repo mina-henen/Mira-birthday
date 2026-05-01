@@ -178,11 +178,19 @@
 
 <script>
 
-  const music = document.getElementById('birthdayMusic');
-document.addEventListener('click', () => {
-  music.play().catch(() => {});
-}, { once: true });
+const music = document.getElementById('birthdayMusic');
+
+// Try autoplay immediately
 music.play().catch(() => {});
+
+// Toggle play/pause on any screen touch or click
+document.addEventListener('click', () => {
+  if (music.paused) {
+    music.play().catch(() => {});
+  } else {
+    music.pause();
+  }
+});
   
   // Crown sparkles
   const crown = document.getElementById('crown');
