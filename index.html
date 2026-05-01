@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <audio id="birthdayMusic" loop autoplay>
+  <audio id="birthdayMusic" loop>
   <source src="kol-sana-wenta-tayb.mp3" type="audio/mpeg">
 </audio>
 <title>Happy Birthday Maramiroo 🩷</title>
@@ -140,6 +140,29 @@
 
   .wish { color: rgba(255,255,255,0.92); font-size: clamp(0.82rem, 3vw, 1.05rem); line-height: 1.85; animation: fadeUp 0.8s 1.3s both; }
   .emoji-row { font-size: clamp(1.1rem, 4vw, 1.5rem); margin-top: 0.8rem; letter-spacing: 4px; animation: fadeUp 0.8s 1.5s both; }
+  .music-btn {
+  margin-top: 1rem;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff4fa3, #ff82c4);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 80, 160, 0.4);
+  transition: all 0.3s ease;
+  animation: fadeUp 0.8s 1.7s both;
+}
+
+.music-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(255, 80, 160, 0.6);
+}
+
+.music-btn:active {
+  transform: scale(0.95);
+}
 </style>
 </head>
 <body>
@@ -174,6 +197,7 @@
     You are loved more than words can say!🫂
   </p>
   <div class="emoji-row">💕 🦋 💫 🎀</div>
+  <button id="musicBtn" class="music-btn">🎵 Play for you 💖</button>
 </div>
 
 <script>
@@ -184,11 +208,15 @@ const music = document.getElementById('birthdayMusic');
 music.play().catch(() => {});
 
 // Toggle play/pause on any screen touch or click
-document.addEventListener('click', () => {
+const btn = document.getElementById("musicBtn");
+
+btn.addEventListener("click", () => {
   if (music.paused) {
     music.play().catch(() => {});
+    btn.innerText = "⏸ Pause 💕";
   } else {
     music.pause();
+    btn.innerText = "🎵 Play for you 💖";
   }
 });
   
