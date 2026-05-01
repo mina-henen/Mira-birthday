@@ -179,30 +179,11 @@
 <script>
 
   const music = document.getElementById('birthdayMusic');
-  let isPlaying = false;
-
-  // Try autoplay (will work on some desktops, fail silently on mobile)
-  window.addEventListener("load", () => {
-    music.play().then(() => {
-      isPlaying = true;
-    }).catch(() => {
-      // Autoplay blocked → wait for user interaction
-    });
-  });
-
-  // Toggle play/pause on ANY interaction (click or touch)
-  document.addEventListener("click", toggleMusic);
-  document.addEventListener("touchstart", toggleMusic);
-
-  function toggleMusic() {
-    if (isPlaying) {
-      music.pause();
-      isPlaying = false;
-    } else {
-      music.play();
-      isPlaying = true;
-    }
-  }
+document.addEventListener('click', () => {
+  music.play().catch(() => {});
+}, { once: true });
+music.play().catch(() => {});
+  
   // Crown sparkles
   const crown = document.getElementById('crown');
   ['✨','⭐','💫','🌟','✨','💫','⭐','🌟'].forEach((e,i) => {
